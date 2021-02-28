@@ -56,6 +56,11 @@
       installButton.addEventListener('click', async (event) => {
         installPrompt.prompt();
         const { outcome } = await installPrompt.userChoice;
+
+        if (outcome === "accepted" ) {
+          installButton.setAttribute('hidden', 'hidden');
+        }
+
       });
 
       window.addEventListener('appinstalled', (event) => {
