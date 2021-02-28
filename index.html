@@ -57,6 +57,10 @@
         installPrompt.prompt();
         const { outcome } = await installPrompt.userChoice;
 
+        alert(outcome);
+
+        console.log(outcome)
+
         if (outcome === "accepted" ) {
           installButton.setAttribute('hidden', 'hidden');
         }
