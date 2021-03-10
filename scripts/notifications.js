@@ -13,9 +13,10 @@ if ('Notification' in window) {
 
     notificationSendButton.addEventListener('click', () => {
         navigator.serviceWorker.ready.then(function(registration) {
-        registration.showNotification(
-            'Hello AEA!', 
-            { body: 'How are you doing?', icon: '/images/icon-256.png' });
+            registration.showNotification(
+                'Hello AEA!', 
+                { body: 'How are you doing?', icon: '/images/icon-256.png' }
+            );
         });
     });
 
