@@ -31,18 +31,36 @@
 
       <br><br>
 
-      <button id="notification-permission">Request notifications permission</button>
-      <button id="notification-send">Send notification</button>
+      <details>
+        <summary>Push Notifications</summary>
 
-      <br><br>
+        <button id="notification-permission">Request notifications permission</button>
+        <button id="notification-send">Send notification</button>
+      </details>
 
-      <button id="background-fetch">Start a background fetch</button>
-      <div id="background-fetch-progress"></div>
+
+      <details>
+        <summary>Background Fetch</summary>
+
+        <button id="background-fetch">Start a background fetch</button>
+        <div id="background-fetch-progress"></div>
+      </details>
+
+      <details open>
+        <summary>Web Share</summary>
+
+        <button id="web-share">Share a link</button>
+      </details>
+
+
         
       
     </main>
 
     <script>
+
+      /* Service Worker ********************************************/
+
       if('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js', { scope: '/' }).then((registration) => {
           console.log('Service Worker Registered');
@@ -52,6 +70,9 @@
           console.log('Service Worker Ready');
         });
       }
+
+
+      /* Install ********************************************/
 
       const installButton = document.getElementById('install');
 
@@ -83,9 +104,7 @@
 
 
 
-      // Notifications
-
-
+      /* SNotifications ********************************************/
       
       const notificationPermissionButton = document.getElementById('notification-permission');
       const notificationSendButton = document.getElementById('notification-send');
@@ -121,8 +140,7 @@
       }
 
 
-
-      // Background fetch
+      /* Background Fetch ********************************************/
 
       document.getElementById('background-fetch').addEventListener('click', () => {
         
@@ -140,6 +158,24 @@
         });
 
       });
+
+
+      /* Web Share ********************************************/
+
+      document.getElementById('web-share').addEventListener('click', async () => {
+
+      
+        if (navigator.share) {
+            navigator.share({
+                title: 'An Event Apart Spring Summit',
+                text: 'Check out An Event Apart\’s latest conference!',
+                url: 'https://aneventapart.com/event/spring-summit-2021',
+            });
+        }
+
+      })
+
+      
 
       
 

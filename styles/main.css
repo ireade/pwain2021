@@ -35,3 +35,17 @@ textarea {
     width: 100%;
     margin: 1em 0;
 }
+
+details {
+    margin-bottom: 1em;
+}
+
+details[open] {
+    margin-bottom: 2em;
+}
+
+details summary {
+    font-weight: 600;
+    margin-bottom: 1em;
+    cursor: pointer;
+}
