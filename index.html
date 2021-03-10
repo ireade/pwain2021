@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>PWA in 2021</title>
@@ -14,174 +14,69 @@
     <meta name="theme-color" content="#D33257">
     <meta property="og:title" content="PWA in 2021">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://cdsx2021.netlify.app/images/icon-192x192.png">
-    <meta property="og:url" content="https://cdsx2021.netlify.app/">
+    <meta property="og:image" content="https://pwain2021.netlify.app/images/icon-192x192.png">
+    <meta property="og:url" content="https://pwain2021.netlify.app/">
     <meta property="og:description" content="A demo of what we can do with PWAs in 2021">
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/main.css">
-
   </head>
   <body>
+
+    <div class="container">
+      <header>
+        <h1>PWA in 2021</h1>
+        <p>A demo of various web capabilities available in 2021.</p>
+      </header>
     
-    <main>
-      <h1>PWA in 2021</h1>
+      <main>
+        <details>
+          <summary>Install</summary>
 
-      <button id="install" hidden>Install</button>
+          <button id="install" hidden>Install</button>
+        </details>
 
-      <br><br>
+        <details>
+          <summary>Push Notifications</summary>
 
-      <details>
-        <summary>Push Notifications</summary>
-
-        <button id="notification-permission">Request notifications permission</button>
-        <button id="notification-send">Send notification</button>
-      </details>
-
-
-      <details>
-        <summary>Background Fetch</summary>
-
-        <button id="background-fetch">Start a background fetch</button>
-        <div id="background-fetch-progress"></div>
-      </details>
-
-      <details open>
-        <summary>Web Share</summary>
-
-        <button id="web-share">Share a link</button>
-      </details>
+          <button id="notification-permission">Request notifications permission</button>
+          <button id="notification-send">Send notification</button>
+        </details>
 
 
-        
-      
-    </main>
+        <details>
+          <summary>Background Fetch</summary>
+
+          <button id="background-fetch">Start a background fetch</button>
+          <div id="background-fetch-progress"></div>
+        </details>
+
+        <details open>
+          <summary>Web Share</summary>
+
+          <button id="web-share">Share a link</button>
+        </details>
+      </main>
+
+      <footer>
+        By <a href="https://ireaderinokun.com">Ire Aderinokun</a>
+      </footer>
+  </div>
 
     <script>
-
-      /* Service Worker ********************************************/
-
       if('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js', { scope: '/' }).then((registration) => {
           console.log('Service Worker Registered');
         });
-
-        navigator.serviceWorker.ready.then((registration) => {
-          console.log('Service Worker Ready');
-        });
       }
-
-
-      /* Install ********************************************/
-
-      const installButton = document.getElementById('install');
-
-      let installPrompt;
-
-      window.addEventListener('beforeinstallprompt', (event) => {
-        event.preventDefault();
-        installPrompt = event;
-        installButton.removeAttribute('hidden');
-      });
-
-      installButton.addEventListener('click', async (event) => {
-        installPrompt.prompt();
-        const { outcome } = await installPrompt.userChoice;
-
-        alert(outcome);
-
-        console.log(outcome)
-
-        if (outcome === "accepted" ) {
-          installButton.setAttribute('hidden', 'hidden');
-        }
-
-      });
-
-      window.addEventListener('appinstalled', (event) => {
-        installButton.setAttribute('hidden', 'hidden');
-      });
-
-
-
-      /* SNotifications ********************************************/
-      
-      const notificationPermissionButton = document.getElementById('notification-permission');
-      const notificationSendButton = document.getElementById('notification-send');
-
-      if ('Notification' in window) {
-
-        
-
-        if (Notification.permission === "granted") {
-          notificationPermissionButton.setAttribute('hidden', 'hidden');
-        }
-
-
-        notificationPermissionButton.addEventListener('click', () => {
-          Notification.requestPermission();
-        });
-
-        notificationSendButton.addEventListener('click', () => {
-
-
-          navigator.serviceWorker.ready.then(function(registration) {
-            registration.showNotification(
-              'Hello AEA!', 
-              { body: 'How are you doing?', icon: '/images/icon-256.png' });
-          });
-
-        });
-
-
-      } else {
-        notificationPermissionButton.setAttribute('hidden', 'hidden');
-        notificationSendButton.setAttribute('hidden', 'hidden');
-      }
-
-
-      /* Background Fetch ********************************************/
-
-      document.getElementById('background-fetch').addEventListener('click', () => {
-        
-        navigator.serviceWorker.ready.then(async (registration) => {
-            const videoFetch = await registration.backgroundFetch.fetch('video-fetch', ['/media/audio.mp4'], {
-                title: 'Funny Video',
-                icons: [{ sizes: '300x300', src: '/images/icon-256.png', type: 'image/png', }],
-                downloadTotal: 60 * 1024 * 1024,
-            });
-
-            videoFetch.addEventListener('progress', () => {
-                const percent = Math.round(videoFetch.downloaded / videoFetch.downloadTotal * 100);
-                document.getElementById('background-fetch-progress').textContent = `Download progress: ${percent}%`;
-            });
-        });
-
-      });
-
-
-      /* Web Share ********************************************/
-
-      document.getElementById('web-share').addEventListener('click', async () => {
-
-      
-        if (navigator.share) {
-            navigator.share({
-                title: 'An Event Apart Spring Summit',
-                text: 'Check out An Event Apart\’s latest conference!',
-                url: 'https://aneventapart.com/event/spring-summit-2021',
-            });
-        }
-
-      })
-
-      
-
-      
-
-
     </script>
 
+    <script src="scripts/install.js"></script>
+    <script src="scripts/notifications.js"></script>
+    <script src="scripts/background-fetch.js"></script>
+    <script src="scripts/web-share.js"></script>
 
   </body>
 </html>

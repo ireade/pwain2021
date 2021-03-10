@@ -1,34 +1,75 @@
+:root {
+    --color-primary: #D33257;
+}
+
 
 html {
     font-size: 62.5%;
-    background-color: #D33257;
+    background-color: var(--color-primary);
     color: #fff;
 }
 
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Oxygen-Sans,Ubuntu,Cantarell,sans-serif;
+    font-family: 'Poppins', -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Oxygen-Sans,Ubuntu,Cantarell,sans-serif;
     font-size: 1.5rem;
     line-height: 1.4;
     font-weight: 300;
 }
 
+/* Text */
+
 h1 {
     font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 1em;
+}
+
+button {
+    color: #fff;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    height: 35px;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+button:focus,
+button:hover {
+    background-color: #fff;
+    color: var(--color-primary);
+    outline: none;
+}
+
+
+/* Layout */
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    margin-top: 50px;
+    margin-top: 10vh;
+}
+
+header {
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
 main {
-    width: 90%;
-    max-width: 600px;
-    position: relative;
+
+    
 }
 
+footer {
+    margin-top: 2em;
+    padding-top: 2em;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    font-size: 1.2rem;
+}
 
 textarea {
     display: block;
