@@ -28,6 +28,9 @@
       <h1>PWA in 2021</h1>
 
       <button id="install" hidden>Install</button>
+
+      <button id="notification-permission">Request notifications permission</button>
+      <button id="notification-send">Send notification</button>
         
       
     </main>
@@ -69,6 +72,22 @@
 
       window.addEventListener('appinstalled', (event) => {
         installButton.setAttribute('hidden', 'hidden');
+      });
+
+
+      document.getElementById('notification-permission').addEventListener('click', () => {
+        if ('Notification' in window) {
+            Notification.requestPermission();
+        }
+      });
+
+      document.getElementById('notification-send').addEventListener('click', () => {
+        if ('Notification' in window) {
+          new Notification(
+            'Hello AEA!', 
+            { body: 'How are you doing?', icon: '/images/icon-256.png' }
+          );
+        }
       });
 
 
