@@ -30,7 +30,7 @@
       <button id="install" hidden>Install</button>
 
       <button id="notification-permission">Request notifications permission</button>
-      <button id="notification-send">Send notification</button>
+      <button id="notification-send">Send notification 2</button>
         
       
     </main>
@@ -97,14 +97,20 @@
         });
 
         notificationSendButton.addEventListener('click', () => {
-          alert('scheduled')
 
-          setTimeout(() => {
-            new Notification(
+
+          navigator.serviceWorker.ready.then(function(registration) {
+            registration.showNotification(
               'Hello AEA!', 
-              { body: 'How are you doing?', icon: '/images/icon-256.png' }
-            );
-          }, 5000)
+              { body: 'How are you doing?', icon: '/images/icon-256.png' });
+          });
+
+          // setTimeout(() => {
+          //   new Notification(
+          //     'Hello AEA!', 
+          //     { body: 'How are you doing?', icon: '/images/icon-256.png' }
+          //   );
+          // }, 5000)
         });
 
 
