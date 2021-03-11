@@ -9,8 +9,14 @@
 
     <link rel="manifest" href="manifest.webmanifest">
 
+    <link rel="icon" sizes="72x72" href="/images/icon-72.png">
+    <link rel="icon" sizes="96x96" href="/images/icon-96.png">
+    <link rel="icon" sizes="120x120" href="/images/icon-120.png">
+    <link rel="icon" sizes="128x128" href="/images/icon-128.png">
+    <link rel="icon" sizes="144x144" href="/images/icon-144.png">
+    <link rel="icon" sizes="152x152" href="/images/icon-152.png">
+    <link rel="icon" sizes="180x180" href="/images/icon-180.png">
     <link rel="icon" sizes="192x192" href="/images/icon-192.png">
-    <link rel="icon" sizes="256x256" href="/images/icon-256.png">
     <link rel="icon" sizes="384x384" href="/images/icon-384.png">
     <link rel="icon" sizes="512x512" href="/images/icon-512.png">
 
@@ -24,7 +30,58 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/main.css">
+
+    <style>
+        :root {
+            --color-primary: #D33257;
+        }
+
+        html {
+            font-size: 62.5%;
+            background-color: var(--color-primary);
+            color: #fff;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Oxygen-Sans,Ubuntu,Cantarell,sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.4;
+            font-weight: 300;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        p {
+            display: block;
+            margin-bottom: 1em;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin-right: auto;
+            margin-left: auto;
+            position: relative;
+            margin-top: 50px;
+            margin-top: 10vh;
+        }
+
+        header {
+            margin-bottom: 2em;
+            padding-bottom: 2em;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        footer {
+            margin-top: 2em;
+            padding-top: 2em;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 <body>
 
