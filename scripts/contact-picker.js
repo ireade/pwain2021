@@ -13,7 +13,12 @@ if ('contacts' in navigator) {
 
         alert(contacts[0])
 
-        const sample = document.getElementById('sample-contact');
+        document.getElementById('sample-contact').innerHTML = `
+            <p>Name: ${contacts[0].name}</p>
+            <p>Email: ${contacts[0].email}</p>
+            <p>Tel: ${contacts[0].tel}</p>
+            <p><img src="${icon}" alt=""></p>
+        `;
     });
 
 
