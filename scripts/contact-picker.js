@@ -21,8 +21,6 @@ if ('contacts' in navigator) {
             <p>Name: ${name}</p>
             <p>Email: ${email}</p>
             <p>Tel: ${tel}</p>
-            <br>
-            <p>${JSON.stringify(contacts[0])}</p>
         `;
     });
 
