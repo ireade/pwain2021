@@ -7,17 +7,20 @@ if ('contacts' in navigator) {
     getContacts.addEventListener('click', async () => {
 
         const contacts = await navigator.contacts.select(
-            ['name', 'email', 'tel', 'icon'],
+            ['name', 'email', 'tel'],
             {multiple: true}
         );
 
-        alert(JSON.stringify(contacts[0]))
+        if (!contacts[0]) return;
+
+        const name = contacts[0].name[0];
+        const email = contacts[0].email[0];
+        const tel = contacts[0].tel[0];
 
         document.getElementById('sample-contact').innerHTML = `
-            <p>Name: ${contacts[0].name}</p>
-            <p>Email: ${contacts[0].email}</p>
-            <p>Tel: ${contacts[0].tel}</p>
-            <p><img src="${icon}" alt=""></p>
+            <p>Name: ${name}</p>
+            <p>Email: ${email}</p>
+            <p>Tel: ${tel}</p>
         `;
     });
 
