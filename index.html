@@ -9,12 +9,12 @@
 
     <link rel="manifest" href="manifest.webmanifest">
 
-    <link rel="icon" sizes="192x192" href="/images/icon-192x192.png">
+    <link rel="icon" sizes="192x192" href="/images/icon-192.png">
 
     <meta name="theme-color" content="#D33257">
     <meta property="og:title" content="PWA in 2021">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://pwain2021.netlify.app/images/icon-192x192.png">
+    <meta property="og:image" content="https://pwain2021.netlify.app/images/icon-192.png">
     <meta property="og:url" content="https://pwain2021.netlify.app/">
     <meta property="og:description" content="A demo of what we can do with PWAs in 2021">
 
@@ -47,19 +47,26 @@
           <button id="notification-send" hidden>Send notification</button>
         </details>
 
-        <details id="feat-app-badge" open>
+        <details id="feat-app-badge">
           <summary>App Badge</summary>
           <p>Set the application badge icon.</p>
 
-          <button id="set-app-badge">Set app badge</button>
-          <button id="clear-app-badge">Clear app badge</button>
+          <button id="set-app-badge" hidden>Set app badge</button>
+          <button id="clear-app-badge" hidden>Clear app badge</button>
         </details>
 
-        <details id="feat-background-fetch">
+        <details id="feat-background-fetch" open>
           <summary>Background Fetch</summary>
-
+          <p>Set a long-running fetch task to operate in the background.</p>
           <button id="background-fetch">Start a background fetch</button>
-          <div id="background-fetch-progress"></div>
+          <p id="background-fetch-progress"></p>
+        </details>
+
+        <details id="feat-contact-picker">
+          <summary>Contact picker</summary>
+          <p>Read contacts.</p>
+          <button id="get-contacts" hidden>Get contacts</button>
+          <p id="sample-contact"></p>
         </details>
 
         <details>
@@ -86,6 +93,7 @@
     <script src="scripts/notifications.js"></script>
     <script src="scripts/app-badge.js"></script>
     <script src="scripts/background-fetch.js"></script>
+    <script src="scripts/contact-picker.js"></script>
     <script src="scripts/web-share.js"></script>
 
   </body>

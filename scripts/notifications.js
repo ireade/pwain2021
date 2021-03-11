@@ -1,8 +1,8 @@
-const notificationFeature = document.getElementById('feat-notifications');
-const notificationPermissionButton = document.getElementById('notification-permission');
-const notificationSendButton = document.getElementById('notification-send');
 
 if ('Notification' in window) {
+
+    const notificationPermissionButton = document.getElementById('notification-permission');
+    const notificationSendButton = document.getElementById('notification-send');
 
     if (Notification.permission === "granted") {
         notificationPermissionButton.setAttribute('hidden', 'hidden');
@@ -30,6 +30,6 @@ if ('Notification' in window) {
     });
 
 } else {
-
-    notificationFeature.insertAdjacentHTML('beforeend', '<p class="error">Feature not available</p>')
+    document.getElementById('feat-notifications')
+        .insertAdjacentHTML('beforeend', '<p class="error">Feature not available</p>');
 }

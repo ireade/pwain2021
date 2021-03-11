@@ -41,6 +41,8 @@ button {
     height: 35px;
     padding: 0 15px;
     cursor: pointer;
+    margin-right: 0.5em;
+    margin-bottom: 1em;
 }
 
 button:focus,
