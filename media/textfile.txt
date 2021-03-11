@@ -1,0 +1,5 @@
+This is an example text file!
+
+Hello there! This is an example of file system access :)
+
+This is an edit of the file!
