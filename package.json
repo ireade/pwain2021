@@ -1,0 +1,29 @@
+{
+  "name": "pwain2021",
+  "version": "1.0.0",
+  "description": "A demo of what we can do with PWAs in 2021",
+  "main": "sw.js",
+  "scripts": {
+    "dev": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ireade/pwain2021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ireade/pwain2021/issues"
+  },
+  "homepage": "https://github.com/ireade/pwain2021#readme",
+  "dependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.24.4",
+    "webpack-cli": "^4.5.0",
+    "workbox-navigation-preload": "^6.1.1",
+    "workbox-routing": "^6.1.1",
+    "workbox-strategies": "^6.1.1"
+  }
+}

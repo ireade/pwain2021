@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>PWA in 2021</title>
+
+    <meta name="description" content="A demo of what we can do with PWAs in 2021">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <link rel="icon" sizes="192x192" href="/images/icon-192.png">
+    <link rel="icon" sizes="256x256" href="/images/icon-256.png">
+    <link rel="icon" sizes="384x384" href="/images/icon-384.png">
+    <link rel="icon" sizes="512x512" href="/images/icon-512.png">
+
+    <meta name="theme-color" content="#D33257">
+    <meta property="og:title" content="PWA in 2021">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://pwain2021.netlify.app/images/icon-192.png">
+    <meta property="og:url" content="https://pwain2021.netlify.app/">
+    <meta property="og:description" content="A demo of what we can do with PWAs in 2021">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>PWA in 2021</h1>
+        <p>A demo of various web capabilities available in 2021.</p>
+    </header>
+
+    <main>
+        <p>You're offline!</p>
+    </main>
+
+    <footer>
+        <a href="https://github.com/ireade/pwain2021">Source</a>
+    </footer>
+</div>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' }).then((registration) => {
+            console.log('Service Worker Registered');
+        });
+    }
+</script>
+
+</body>
+</html>
