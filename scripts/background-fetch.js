@@ -1,7 +1,10 @@
 
 if ('BackgroundFetchManager' in self) {
 
-    document.getElementById('background-fetch').addEventListener('click', () => {
+    const backgroundFetch = document.getElementById('background-fetch');
+    backgroundFetch.removeAttribute('hidden');
+
+    backgroundFetch.addEventListener('click', () => {
 
         navigator.serviceWorker.ready.then(async (registration) => {
 
