@@ -30,23 +30,32 @@
         <h1>PWA in 2021</h1>
         <p>A demo of various web capabilities available in 2021.</p>
       </header>
-    
+
       <main>
-        <details>
+        <details id="feat-install">
           <summary>Install</summary>
+          <p>Install this website as a mobile/desktop application.</p>
 
           <button id="install" hidden>Install</button>
         </details>
 
-        <details>
+        <details id="feat-notifications">
           <summary>Push Notifications</summary>
+          <p>Request permission for and send a push notification to the device.</p>
 
-          <button id="notification-permission">Request notifications permission</button>
-          <button id="notification-send">Send notification</button>
+          <button id="notification-permission" hidden>Request permission</button>
+          <button id="notification-send" hidden>Send notification</button>
         </details>
 
+        <details id="feat-app-badge" open>
+          <summary>App Badge</summary>
+          <p>Set the application badge icon.</p>
 
-        <details>
+          <button id="set-app-badge">Set app badge</button>
+          <button id="clear-app-badge">Clear app badge</button>
+        </details>
+
+        <details id="feat-background-fetch">
           <summary>Background Fetch</summary>
 
           <button id="background-fetch">Start a background fetch</button>
@@ -75,6 +84,7 @@
 
     <script src="scripts/install.js"></script>
     <script src="scripts/notifications.js"></script>
+    <script src="scripts/app-badge.js"></script>
     <script src="scripts/background-fetch.js"></script>
     <script src="scripts/web-share.js"></script>
 

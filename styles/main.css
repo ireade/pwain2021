@@ -23,6 +23,16 @@ h1 {
     font-weight: 600;
 }
 
+p {
+    display: block;
+    margin-bottom: 1em;
+}
+
+.error {
+    display: block;
+    margin-top: 1em;
+}
+
 button {
     color: #fff;
     border: 1px solid white;
@@ -61,7 +71,7 @@ header {
 
 main {
 
-    
+
 }
 
 footer {

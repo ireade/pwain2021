@@ -1,3 +1,4 @@
+const installFeature = document.getElementById('feat-install');
 const installButton = document.getElementById('install');
 let installPrompt;
 
@@ -9,7 +10,7 @@ window.addEventListener('beforeinstallprompt', (event) => {
 
 installButton.addEventListener('click', async (event) => {
     installPrompt.prompt();
-    
+
     const { outcome } = await installPrompt.userChoice;
     if (outcome === "accepted" ) installButton.setAttribute('hidden', 'hidden');
 
@@ -17,6 +18,6 @@ installButton.addEventListener('click', async (event) => {
 });
 
 window.addEventListener('appinstalled', (event) => {
-    installButton.setAttribute('hidden', 'hidden'); 
+    installButton.setAttribute('hidden', 'hidden');
     installPrompt = null;
 });
