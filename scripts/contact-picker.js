@@ -11,7 +11,7 @@ if ('contacts' in navigator) {
             {multiple: true}
         );
 
-        alert(contacts[0])
+        alert(contacts[0].name)
 
         document.getElementById('sample-contact').innerHTML = `
             <p>Name: ${contacts[0].name}</p>
