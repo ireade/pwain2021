@@ -11,7 +11,7 @@ if ('contacts' in navigator) {
             {multiple: true}
         );
 
-        alert(contacts[0].name)
+        alert(JSON.stringify(contacts[0]))
 
         document.getElementById('sample-contact').innerHTML = `
             <p>Name: ${contacts[0].name}</p>
@@ -20,7 +20,6 @@ if ('contacts' in navigator) {
             <p><img src="${icon}" alt=""></p>
         `;
     });
-
 
 } else {
     document.getElementById('feat-contact-picker')
