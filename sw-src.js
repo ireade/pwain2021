@@ -2,7 +2,6 @@ import * as navigationPreload from 'workbox-navigation-preload';
 import {registerRoute, NavigationRoute} from 'workbox-routing';
 import {NetworkOnly} from 'workbox-strategies';
 
-
 const CACHE_OFFLINE_PAGE = 'offline-html';
 const FALLBACK_HTML_URL = '/offline.html';
 
@@ -47,7 +46,7 @@ self.addEventListener('fetch', event => {
 self.addEventListener('push', event => {
     event.waitUntil(
         self.registration.showNotification(
-            'Hello AEA!',
+            'Hello from PWA in 2021!',
             { body: 'How are you doing?', icon: '/images/icon-256.png' }
         )
     );
