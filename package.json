@@ -4,7 +4,7 @@
   "description": "A demo of what we can do with PWAs in 2021",
   "main": "sw.js",
   "scripts": {
-    "dev": "webpack"
+    "dev": "webpack --watch"
   },
   "repository": {
     "type": "git",

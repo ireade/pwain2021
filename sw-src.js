@@ -1,6 +1,6 @@
 import * as navigationPreload from 'workbox-navigation-preload';
 import {registerRoute, NavigationRoute} from 'workbox-routing';
-import {NetworkOnly} from 'workbox-strategies';
+import {NetworkOnly, StaleWhileRevalidate} from 'workbox-strategies';
 
 const CACHE_OFFLINE_PAGE = 'offline-html';
 const FALLBACK_HTML_URL = '/offline.html';
@@ -31,6 +31,20 @@ const navigationHandler = async (params) => {
 
 registerRoute(
     new NavigationRoute(navigationHandler)
+);
+
+registerRoute(
+    ({request}) => request.destination === 'script' || request.destination === 'style',
+    new StaleWhileRevalidate({
+        cacheName: 'static-resources',
+    })
+);
+
+registerRoute(
+    ({url}) => url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com',
+    new StaleWhileRevalidate({
+        cacheName: 'google-fonts',
+    }),
 );
 
 self.addEventListener('activate', event => {
