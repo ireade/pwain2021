@@ -23,7 +23,7 @@ if ('Notification' in window) {
     notificationSendButton.addEventListener('click', () => {
         navigator.serviceWorker.ready.then(function(registration) {
             registration.showNotification(
-                'Hello from PWA in 2021!',
+                'Hey All Day Hey!',
                 { body: 'How are you doing?', icon: '/images/icon-256.png' }
             );
         });
