@@ -23,7 +23,7 @@ if ('Notification' in window) {
     notificationSendButton.addEventListener('click', () => {
         navigator.serviceWorker.ready.then(function(registration) {
             registration.showNotification(
-                'Hey All Day Hey!',
+                'Hey MS Web Community',
                 { body: 'How are you doing?', icon: '/images/icon-256.png' }
             );
         });
