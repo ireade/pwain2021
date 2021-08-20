@@ -5,9 +5,9 @@ if (navigator.share) {
 
     webShare.addEventListener('click', async () => {
         navigator.share({
-            title: 'An Event Apart Spring Summit',
-            text: 'Check out An Event Apart\’s latest conference!',
-            url: 'https://aneventapart.com/event/spring-summit-2021',
+            title: 'PWA in 2021',
+            text: 'Try out this demo app of web capabilities!',
+            url: 'https://pwain2021.netlify.app',
         });
     });
 
