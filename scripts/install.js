@@ -12,7 +12,11 @@ installButton.addEventListener('click', async (event) => {
     installPrompt.prompt();
 
     const { outcome } = await installPrompt.userChoice;
-    if (outcome === "accepted" ) installButton.setAttribute('hidden', 'hidden');
+    if (outcome === "accepted" ) {
+        installButton.setAttribute('hidden', 'hidden');
+    } else {
+        installFeature.insertAdjacentHTML('beforeend', '<p>Prompt not accepted</p>');
+    }
 
     installPrompt = null;
 });
@@ -20,4 +24,5 @@ installButton.addEventListener('click', async (event) => {
 window.addEventListener('appinstalled', (event) => {
     installButton.setAttribute('hidden', 'hidden');
     installPrompt = null;
+    installFeature.insertAdjacentHTML('beforeend', '<p>Install successful (from appinstalled)!</p>');
 });

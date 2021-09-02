@@ -5,6 +5,11 @@ import {NetworkOnly, StaleWhileRevalidate} from 'workbox-strategies';
 const CACHE_OFFLINE_PAGE = 'offline-html';
 const FALLBACK_HTML_URL = '/offline.html';
 
+console.log("hello from swc")
+
+
+// Install & Activate -----------------------------------------------
+
 self.addEventListener('install', async (event) => {
 
     self.skipWaiting();
@@ -15,7 +20,13 @@ self.addEventListener('install', async (event) => {
     );
 });
 
+self.addEventListener('activate', event => {
+
+});
+
 navigationPreload.enable();
+
+// Offline Page -----------------------------------------------
 
 const networkOnly = new NetworkOnly();
 
@@ -33,6 +44,9 @@ registerRoute(
     new NavigationRoute(navigationHandler)
 );
 
+
+// Cache Static Assets -----------------------------------------------
+
 registerRoute(
     ({request}) => request.destination === 'script' || request.destination === 'style',
     new StaleWhileRevalidate({
@@ -47,9 +61,7 @@ registerRoute(
     }),
 );
 
-self.addEventListener('activate', event => {
-
-});
+// Fetch, Push, Sync -----------------------------------------------
 
 self.addEventListener('fetch', event => {
     event.respondWith(
@@ -64,4 +76,26 @@ self.addEventListener('push', event => {
             { body: 'How are you doing?', icon: '/images/icon-256.png' }
         )
     );
+});
+
+self.addEventListener('sync', event => {
+    if (event.tag == 'do-background-sync') {
+        event.waitUntil(
+            self.registration.showNotification(
+                'Background Sync',
+                { body: 'The background sync task has been activated', icon: '/images/icon-256.png' }
+            )
+        );
+    }
+});
+
+self.addEventListener('periodicsync', event => {
+    if (event.tag == 'do-periodic-sync') {
+        event.waitUntil(
+            self.registration.showNotification(
+                'Periodic Background Sync',
+                { body: 'The periodic background sync task has been activated', icon: '/images/icon-256.png' }
+            )
+        );
+    }
 });

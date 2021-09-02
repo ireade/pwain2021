@@ -28,9 +28,9 @@
     <meta property="og:description" content="A demo of what we can do with PWAs in 2021">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/main.css">
   </head>
   <body>
 
@@ -64,11 +64,23 @@
           <button id="clear-app-badge" hidden>Clear app badge</button>
         </details>
 
+        <details id="feat-background-sync" open>
+          <summary>Background Sync</summary>
+          <p>Set a long-running fetch task to operate in the background.</p>
+          <button id="background-sync" hidden>Register a background sync</button>
+        </details>
+
         <details id="feat-background-fetch">
           <summary>Background Fetch</summary>
           <p>Set a long-running fetch task to operate in the background.</p>
           <button id="background-fetch" hidden>Start a background fetch</button>
           <p id="background-fetch-progress"></p>
+        </details>
+
+        <details id="feat-periodic-background-sync" open>
+          <summary>Periodic Background Sync</summary>
+          <p>TODO</p>
+          <button id="periodic-background-sync" hidden>Register a periodic background sync</button>
         </details>
 
         <details id="feat-contact-picker">
@@ -111,7 +123,9 @@
     <script src="scripts/install.js"></script>
     <script src="scripts/notifications.js"></script>
     <script src="scripts/app-badge.js"></script>
+    <script src="scripts/background-sync.js"></script>
     <script src="scripts/background-fetch.js"></script>
+    <script src="scripts/periodic-background-sync.js"></script>
     <script src="scripts/contact-picker.js"></script>
     <script src="scripts/web-share.js"></script>
     <script src="scripts/file-system-access.js"></script>
