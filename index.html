@@ -7,6 +7,8 @@
     <meta name="description" content="A demo of what we can do with PWAs in 2021">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <meta http-equiv="origin-trial" content="AuBthRXxhCT2cF3ma4yn5lAvv6EXhN8ij6XWr3tpqb1oLjxaq/BOI+T/MV782pT2/I4DyxQUZt5K01QJPN5U4wQAAABbeyJvcmlnaW4iOiJodHRwczovL3B3YWluMjAyMS5uZXRsaWZ5LmNvbTo0NDMiLCJmZWF0dXJlIjoiRmlsZUhhbmRsaW5nIiwiZXhwaXJ5IjoxNjM0MDgzMTk5fQ==">
+
     <link rel="manifest" href="manifest.webmanifest">
 
     <link rel="icon" sizes="72x72" href="/images/icon-72.png">
@@ -64,22 +66,22 @@
           <button id="clear-app-badge" hidden>Clear app badge</button>
         </details>
 
-        <details id="feat-background-sync" open>
+        <details id="feat-background-sync">
           <summary>Background Sync</summary>
           <p>Set a long-running fetch task to operate in the background.</p>
           <button id="background-sync" hidden>Register a background sync</button>
         </details>
 
-        <details id="feat-background-fetch">
-          <summary>Background Fetch</summary>
+        <details id="feat-background-fetch" open>
+          <summary>Background Fetch (TBD)</summary>
           <p>Set a long-running fetch task to operate in the background.</p>
           <button id="background-fetch" hidden>Start a background fetch</button>
           <p id="background-fetch-progress"></p>
         </details>
 
-        <details id="feat-periodic-background-sync" open>
+        <details id="feat-periodic-background-sync">
           <summary>Periodic Background Sync</summary>
-          <p>TODO</p>
+          <p>Set a task to run once a day.</p>
           <button id="periodic-background-sync" hidden>Register a periodic background sync</button>
         </details>
 
@@ -97,9 +99,9 @@
           <button id="web-share" hidden>Share a link</button>
         </details>
 
-        <details id="feat-file-system-access">
-          <summary>File System Access</summary>
-          <p>Read from and write to local files.</p>
+        <details id="feat-file-system-access" open>
+          <summary>File System Access & File Handling</summary>
+          <p>Read from and write to local files. Open files with this application.</p>
 
           <button id="open-file" hidden>Open file</button>
           <textarea id="file-editor" name="" cols="30" rows="10" hidden></textarea>

@@ -10,7 +10,7 @@ if ('serviceWorker' in navigator) {
             periodicBackgroundSync.addEventListener('click', () => {
 
                 registration.periodicSync.register('do-periodic-sync', {
-                    minInterval: 24 * 60 * 60 * 1000,
+                    minInterval: 24 * 60 * 60 * 1000, // Once a day
                 });
 
             });

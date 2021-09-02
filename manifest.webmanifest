@@ -71,5 +71,14 @@
             "text": "text",
             "url": "url"
         }
-    }
+    },
+    "file_handlers": [
+        {
+          "action": "/index.html?openfile=true",
+          "accept": {
+            "text/csv": [".txt"]
+          }
+        }
+    ]
+        
   }

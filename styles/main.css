@@ -29,8 +29,11 @@ p {
 }
 
 .error {
-    display: block;
-    margin-top: 1em;
+    display: inline-block;
+    background-color: #ff4700;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 5px;
 }
 
 button {

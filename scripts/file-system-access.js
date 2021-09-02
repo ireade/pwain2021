@@ -1,4 +1,6 @@
 
+
+
 if ('showOpenFilePicker' in window) {
 
     const openFile = document.getElementById('open-file');
@@ -6,7 +8,6 @@ if ('showOpenFilePicker' in window) {
     const fileEditor = document.getElementById('file-editor');
 
     openFile.removeAttribute('hidden');
-
 
     let fileHandle;
 
@@ -26,6 +27,7 @@ if ('showOpenFilePicker' in window) {
 
         fileEditor.value = contents;
 
+        openFile.setAttribute('hidden', 'hidden');
         saveFile.removeAttribute('hidden');
         fileEditor.removeAttribute('hidden');
 
@@ -33,6 +35,10 @@ if ('showOpenFilePicker' in window) {
             const writable = await fileHandle.createWritable();
             await writable.write(fileEditor.value);
             await writable.close();
+
+            openFile.removeAttribute('hidden');
+            saveFile.setAttribute('hidden', 'hidden');
+            fileEditor.setAttribute('hidden', 'hidden');
         });
 
     });
@@ -40,5 +46,28 @@ if ('showOpenFilePicker' in window) {
 
 } else {
     document.getElementById('feat-file-system-access')
-        .insertAdjacentHTML('beforeend', '<p class="error">Feature not available</p>');
+        .insertAdjacentHTML('beforeend', '<p class="error">Feature not available (File System Acess)</p>');
+}
+
+
+if ('launchQueue' in window) {
+
+    launchQueue.setConsumer((launchParams) => {
+        
+        // Nothing to do when the queue is empty.
+        if (!launchParams.files.length) {
+          return;
+        }
+
+        console.log(launchParams.files)
+        
+        for (const fHandle of launchParams.files) {
+          console.log(fHandle)
+        }
+      });
+
+
+}  else {
+    document.getElementById('feat-file-system-access')
+        .insertAdjacentHTML('beforeend', '<p class="error">Feature not available (File Handling)</p>');
 }

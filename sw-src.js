@@ -5,8 +5,6 @@ import {NetworkOnly, StaleWhileRevalidate} from 'workbox-strategies';
 const CACHE_OFFLINE_PAGE = 'offline-html';
 const FALLBACK_HTML_URL = '/offline.html';
 
-console.log("hello from swc")
-
 
 // Install & Activate -----------------------------------------------
 
