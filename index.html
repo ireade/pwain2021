@@ -33,6 +33,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/main.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JG2PSWY8E7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JG2PSWY8E7');
+    </script>
   </head>
   <body>
 
@@ -68,15 +78,8 @@
 
         <details id="feat-background-sync">
           <summary>Background Sync</summary>
-          <p>Set a long-running fetch task to operate in the background.</p>
+          <p>Set a task to run when connection is stable.</p>
           <button id="background-sync" hidden>Register a background sync</button>
-        </details>
-
-        <details id="feat-background-fetch" open>
-          <summary>Background Fetch (TBD)</summary>
-          <p>Set a long-running fetch task to operate in the background.</p>
-          <button id="background-fetch" hidden>Start a background fetch</button>
-          <p id="background-fetch-progress"></p>
         </details>
 
         <details id="feat-periodic-background-sync">
@@ -99,7 +102,7 @@
           <button id="web-share" hidden>Share a link</button>
         </details>
 
-        <details id="feat-file-system-access" open>
+        <details id="feat-file-system-access">
           <summary>File System Access & File Handling</summary>
           <p>Read from and write to local files. Open files with this application.</p>
 
@@ -126,7 +129,6 @@
     <script src="scripts/notifications.js"></script>
     <script src="scripts/app-badge.js"></script>
     <script src="scripts/background-sync.js"></script>
-    <script src="scripts/background-fetch.js"></script>
     <script src="scripts/periodic-background-sync.js"></script>
     <script src="scripts/contact-picker.js"></script>
     <script src="scripts/web-share.js"></script>

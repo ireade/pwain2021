@@ -1,12 +1,20 @@
 import * as navigationPreload from 'workbox-navigation-preload';
 import {registerRoute, NavigationRoute} from 'workbox-routing';
 import {NetworkOnly, StaleWhileRevalidate} from 'workbox-strategies';
+import * as googleAnalytics from 'workbox-google-analytics';
 
 const CACHE_OFFLINE_PAGE = 'offline-html';
 const FALLBACK_HTML_URL = '/offline.html';
 
 
+// Offline Google Analytics -----------------------------------------------
+
+googleAnalytics.initialize();
+
+
 // Install & Activate -----------------------------------------------
+
+navigationPreload.enable();
 
 self.addEventListener('install', async (event) => {
 
@@ -22,7 +30,46 @@ self.addEventListener('activate', event => {
 
 });
 
-navigationPreload.enable();
+// Fetch, Push, Sync -----------------------------------------------
+
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        fetch(event.request)
+    );
+});
+
+self.addEventListener('push', event => {
+    const body = (event.data && event.data.text()) || 'Hi there!';
+    event.waitUntil(
+        self.registration.showNotification(
+            'Hello from PWA in 2021!',
+            { body: body, icon: '/images/icon-256.png' }
+        )
+    );
+});
+
+self.addEventListener('sync', event => {
+    if (event.tag == 'do-background-sync') {
+        event.waitUntil(
+            self.registration.showNotification(
+                'Background Sync',
+                { body: 'The background sync task has been activated', icon: '/images/icon-256.png' }
+            )
+        );
+    }
+});
+
+self.addEventListener('periodicsync', event => {
+    if (event.tag == 'do-periodic-sync') {
+        event.waitUntil(
+            self.registration.showNotification(
+                'Periodic Background Sync',
+                { body: 'The periodic background sync task has been activated', icon: '/images/icon-256.png' }
+            )
+        );
+    }
+});
+
 
 // Offline Page -----------------------------------------------
 
@@ -58,42 +105,3 @@ registerRoute(
         cacheName: 'google-fonts',
     }),
 );
-
-// Fetch, Push, Sync -----------------------------------------------
-
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        fetch(event.request)
-    );
-});
-
-self.addEventListener('push', event => {
-    event.waitUntil(
-        self.registration.showNotification(
-            'Hello from PWA in 2021!',
-            { body: 'How are you doing?', icon: '/images/icon-256.png' }
-        )
-    );
-});
-
-self.addEventListener('sync', event => {
-    if (event.tag == 'do-background-sync') {
-        event.waitUntil(
-            self.registration.showNotification(
-                'Background Sync',
-                { body: 'The background sync task has been activated', icon: '/images/icon-256.png' }
-            )
-        );
-    }
-});
-
-self.addEventListener('periodicsync', event => {
-    if (event.tag == 'do-periodic-sync') {
-        event.waitUntil(
-            self.registration.showNotification(
-                'Periodic Background Sync',
-                { body: 'The periodic background sync task has been activated', icon: '/images/icon-256.png' }
-            )
-        );
-    }
-});

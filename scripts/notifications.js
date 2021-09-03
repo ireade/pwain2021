@@ -4,30 +4,51 @@ if ('Notification' in window) {
     const notificationPermissionButton = document.getElementById('notification-permission');
     const notificationSendButton = document.getElementById('notification-send');
 
-    if (Notification.permission === "granted") {
-        notificationPermissionButton.setAttribute('hidden', 'hidden');
-        notificationSendButton.removeAttribute('hidden');
-    } else {
-        notificationPermissionButton.removeAttribute('hidden');
-    }
-
-    notificationPermissionButton.addEventListener('click', async () => {
-        const permission = await Notification.requestPermission();
-
+    function handleNotificationPermission(permission) {
         if (permission === "granted") {
             notificationPermissionButton.setAttribute('hidden', 'hidden');
             notificationSendButton.removeAttribute('hidden');
-        }
-    });
 
-    notificationSendButton.addEventListener('click', () => {
-        navigator.serviceWorker.ready.then(function(registration) {
-            registration.showNotification(
-                'Hey MS Web Community',
-                { body: 'How are you doing?', icon: '/images/icon-256.png' }
-            );
+            setupNotificationSendButton();
+        } else {
+            notificationPermissionButton.removeAttribute('hidden');
+            notificationSendButton.setAttribute('hidden', 'hidden');
+
+            notificationPermissionButton.addEventListener('click', async () => {
+                // @todo 2 - request permission
+                const permission = await Notification.requestPermission();
+                handleNotificationPermission(permission);
+            });
+        }
+    }
+
+    function setupNotificationSendButton() {
+        notificationSendButton.addEventListener('click', () => {
+            // @todo 3 - send notification
+            navigator.serviceWorker.ready.then(function(registration) {
+                registration.showNotification(
+                    'Hey MS Web Community',
+                    { body: 'How are you doing?', icon: '/images/icon-256.png' }
+                );
+            });
         });
-    });
+    }
+
+    // @todo 1 - determine initial permission
+    handleNotificationPermission(Notification.permission); 
+
+    
+    // @todo 5 - send push subscription to server
+    function sendPushSubscriptionToServer() {
+        navigator.serviceWorker.ready.then(async function(registration) {
+            const pushSubscription = await registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: '<VAPID-KEY-HERE>',
+            });
+
+            // save pushSubscription to your server
+        });
+    }
 
 } else {
     document.getElementById('feat-notifications')
