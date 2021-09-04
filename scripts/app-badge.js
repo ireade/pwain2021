@@ -9,13 +9,13 @@ if ('setAppBadge' in navigator) {
 
     setAppBadge.addEventListener('click', () => {
         // @todo 1 - set app badge to a random number
-        const num = Math.floor(Math.random() * 20) + 1;
-        navigator.setAppBadge(num);
+        // const num = Math.floor(Math.random() * 20) + 1;
+        // navigator.setAppBadge(num);
     });
 
     clearAppBadge.addEventListener('click', () => {
         // @todo 2 - clear app badge
-        navigator.clearAppBadge();
+        // navigator.clearAppBadge();
     });
 } else {
     document.getElementById('feat-app-badge')
