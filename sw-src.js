@@ -30,13 +30,7 @@ self.addEventListener('activate', event => {
 
 });
 
-// Fetch, Push, Sync -----------------------------------------------
-
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        fetch(event.request)
-    );
-});
+// Push & Sync -----------------------------------------------
 
 self.addEventListener('push', event => {
     const body = (event.data && event.data.text()) || 'Hi there!';
@@ -49,7 +43,7 @@ self.addEventListener('push', event => {
 });
 
 self.addEventListener('sync', event => {
-    if (event.tag == 'do-background-sync') {
+    if (event.tag == 'do-background-sync-2') {
         event.waitUntil(
             self.registration.showNotification(
                 'Background Sync',
@@ -88,6 +82,12 @@ const navigationHandler = async (params) => {
 registerRoute(
     new NavigationRoute(navigationHandler)
 );
+
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        fetch(event.request)
+    );
+});
 
 
 // Cache Static Assets -----------------------------------------------
