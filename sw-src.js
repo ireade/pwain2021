@@ -30,7 +30,13 @@ self.addEventListener('activate', event => {
 
 });
 
-// Push & Sync -----------------------------------------------
+// Fetch, Push, Sync -----------------------------------------------
+
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        fetch(event.request)
+    );
+});
 
 self.addEventListener('push', event => {
     const body = (event.data && event.data.text()) || 'Hi there!';
@@ -43,7 +49,7 @@ self.addEventListener('push', event => {
 });
 
 self.addEventListener('sync', event => {
-    if (event.tag == 'do-background-sync-2') {
+    if (event.tag == 'background-sync-demo') {
         event.waitUntil(
             self.registration.showNotification(
                 'Background Sync',
@@ -54,7 +60,7 @@ self.addEventListener('sync', event => {
 });
 
 self.addEventListener('periodicsync', event => {
-    if (event.tag == 'do-periodic-sync') {
+    if (event.tag == 'periodic-sync-demo') {
         event.waitUntil(
             self.registration.showNotification(
                 'Periodic Background Sync',
@@ -82,12 +88,6 @@ const navigationHandler = async (params) => {
 registerRoute(
     new NavigationRoute(navigationHandler)
 );
-
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        fetch(event.request)
-    );
-});
 
 
 // Cache Static Assets -----------------------------------------------

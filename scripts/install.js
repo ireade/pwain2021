@@ -25,7 +25,7 @@ installButton.addEventListener('click', async (event) => {
     //     installFeature.insertAdjacentHTML('beforeend', '<p>Prompt not accepted</p>');
     // }
 
-    // installPrompt = null;
+    installPrompt = null;
 });
 
 // @todo 5 - cleanup

@@ -9,8 +9,8 @@ if ('serviceWorker' in navigator) {
 
             periodicBackgroundSync.addEventListener('click', () => {
 
-                // @todo 1 - register 'do-periodic-sync'
-                // registration.periodicSync.register('do-periodic-sync', {
+                // @todo 1 - register 'periodic-sync-demo'
+                // registration.periodicSync.register('periodic-sync-demo', {
                 //     minInterval: 24 * 60 * 60 * 1000, // Once a day
                 // });
 
