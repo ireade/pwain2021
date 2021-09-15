@@ -6,9 +6,9 @@ if ('SyncManager' in window) {
     backgroundSync.addEventListener('click', () => {
 
         // @todo 1 - register "background-sync-demo" task
-        // navigator.serviceWorker.ready.then(async (registration) => {
-        //     await registration.sync.register('background-sync-demo');
-        // });
+        navigator.serviceWorker.ready.then(async (registration) => {
+            await registration.sync.register('background-sync-demo');
+        });
 
     });
 

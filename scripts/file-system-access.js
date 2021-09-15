@@ -12,21 +12,21 @@ if ('showOpenFilePicker' in window) {
 
     openFile.addEventListener('click', async () => {
         // @todo 1 - show file picker
-        // [fileHandle] = await window.showOpenFilePicker({
-        //     multiple: false,
-        //     excludeAcceptAllOption: true,
-        //     types: [{
-        //         description: 'Text files',
-        //         accept: {
-        //             'text/*': ['.txt', '.html', '.css', '.js', '.csv']
-        //         }
-        //     }]
-        // });
+        [fileHandle] = await window.showOpenFilePicker({
+            multiple: false,
+            excludeAcceptAllOption: true,
+            types: [{
+                description: 'Text files',
+                accept: {
+                    'text/*': ['.txt', '.html', '.css', '.js', '.csv']
+                }
+            }]
+        });
 
         // @todo 2 - get and display file contents in textarea
-        // const file = await fileHandle.getFile();
-        // const contents = await file.text();
-        // fileEditor.value = contents;
+        const file = await fileHandle.getFile();
+        const contents = await file.text();
+        fileEditor.value = contents;
 
         openFile.setAttribute('hidden', 'hidden');
         saveFile.removeAttribute('hidden');
@@ -34,9 +34,9 @@ if ('showOpenFilePicker' in window) {
 
         saveFile.addEventListener('click', async () => {
             // @todo 3 - save file
-            // const writable = await fileHandle.createWritable();
-            // await writable.write(fileEditor.value);
-            // await writable.close();
+            const writable = await fileHandle.createWritable();
+            await writable.write(fileEditor.value);
+            await writable.close();
 
             openFile.removeAttribute('hidden');
             saveFile.setAttribute('hidden', 'hidden');

@@ -16,8 +16,8 @@ if ('Notification' in window) {
 
             notificationPermissionButton.addEventListener('click', async () => {
                 // @todo 2 - request permission
-                // const permission = await Notification.requestPermission(); // don't forget to turn of DND ;)
-                // handleNotificationPermission(permission);
+                const permission = await Notification.requestPermission();
+                handleNotificationPermission(permission);
             });
         }
     }
@@ -25,17 +25,17 @@ if ('Notification' in window) {
     function setupNotificationSendButton() {
         notificationSendButton.addEventListener('click', () => {
             // @todo 3 - send notification
-            // navigator.serviceWorker.ready.then(function(registration) {
-            //     registration.showNotification(
-            //         'Hey MS Web Community',
-            //         { body: 'How are you doing?', icon: '/images/icon-256.png' }
-            //     );
-            // });
+            navigator.serviceWorker.ready.then(function(registration) {
+                registration.showNotification(
+                    'Hey MS Web Community',
+                    { body: 'How are you doing?', icon: '/images/icon-256.png' }
+                );
+            });
         });
     }
 
     // @todo 1 - determine initial permission
-    // handleNotificationPermission(Notification.permission); 
+    handleNotificationPermission(Notification.permission); 
 
 } else {
     document.getElementById('feat-notifications')
