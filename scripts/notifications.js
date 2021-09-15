@@ -16,7 +16,7 @@ if ('Notification' in window) {
 
             notificationPermissionButton.addEventListener('click', async () => {
                 // @todo 2 - request permission
-                // const permission = await Notification.requestPermission();
+                // const permission = await Notification.requestPermission(); // don't forget to turn of DND ;)
                 // handleNotificationPermission(permission);
             });
         }
@@ -36,19 +36,6 @@ if ('Notification' in window) {
 
     // @todo 1 - determine initial permission
     // handleNotificationPermission(Notification.permission); 
-
-    
-    // @todo 5 - send push subscription to server
-    // function sendPushSubscriptionToServer() {
-    //     navigator.serviceWorker.ready.then(async function(registration) {
-    //         const pushSubscription = await registration.pushManager.subscribe({
-    //             userVisibleOnly: true,
-    //             applicationServerKey: '<VAPID-KEY-HERE>',
-    //         });
-
-    //         // save pushSubscription to your server
-    //     });
-    // }
 
 } else {
     document.getElementById('feat-notifications')
